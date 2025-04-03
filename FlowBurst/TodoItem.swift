@@ -13,16 +13,25 @@ final class TodoItem {
     var title: String
     var isCompleted: Bool
     var createdAt: Date
-    var completedAt: Date?
+    var deletedAt: Date?
+    @Relationship(deleteRule: .cascade) var list: TodoList?
     
-    init(title: String) {
+    init(title: String, list: TodoList? = nil) {
         self.title = title
         self.isCompleted = false
         self.createdAt = Date()
+        self.list = list
     }
     
     func complete() {
         self.isCompleted = true
-        self.completedAt = Date()
+    }
+    
+    func delete() {
+        self.deletedAt = Date()
+    }
+    
+    func restore() {
+        self.deletedAt = nil
     }
 }

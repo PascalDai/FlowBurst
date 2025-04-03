@@ -12,7 +12,7 @@ import SwiftData
 struct FlowBurstApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            TodoItem.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct FlowBurstApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TodoListView()
         }
         .modelContainer(sharedModelContainer)
     }
